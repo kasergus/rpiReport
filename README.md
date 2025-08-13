@@ -71,7 +71,7 @@ My platform is local device, but I use [cloudflared](https://github.com/cloudfla
 
 ### How the project looks?
 
-Because I have only one bredboard and to rpis, I placed components of both onto one bredboard. Green led is status led, red led is number led. Sending led and photoresistor are hidden into black cylinder.
+Because I have only one bredboard and to rpis, I placed components of both onto one bredboard. But it is possible to divide them, and if room is dark - we can have distanse of couple of meters between them. Green led is status led, red led is number led. Sending led and photoresistor are hidden into black cylinder.
 
 ![project](./pictures/project.jpg)
 
