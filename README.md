@@ -6,7 +6,8 @@ This project was created to transmit information through light. So far, we only 
 
 I love terminal, so everything was done with [neovim](https://github.com/neovim/neovim) and [pgcli](https://www.pgcli.com). I used micropython to program the rpi pico and lgpio library to program rpi 5. Rpi 5 runs an one python program, which rpi pico w can run as well, so I use only microcontroller functions. Also rpi 5 runs the server and database, but any computer can run it, so we can just split these two functions and imagine that they're running on different devices. I learned how to work with [nodejs](https://nodejs.org/en) (with [express](https://expressjs.com) framework). As database I used [postgresql](https://www.postgresql.org) (because it has more functions and it is more robust). All encoding algorithms and interaction scripts was written by me. Here is they:
 
-* [bit.py](./py/bit.py) - responsible for convert data from one type to another [dencode.py](./py/dencode.py) - responsible for encoding and decoding
+* [bit.py](./py/bit.py) - responsible for convert data from one type to another
+* [dencode.py](./py/dencode.py) - responsible for encoding and decoding
 * [nw.py](./py/nw.py) - network connection
 * [nd.js](./js/nd.js) - main server file
 
