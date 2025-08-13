@@ -22,3 +22,7 @@ On the server's main page, you can view statistics, create a new topic, subscrib
 ## Listener
 
 The listener consists of two Raspberry Pi devices. One of them receives information from the server, encodes it, and transmits it in the form of light signals to the other. The other Raspberry Pi receives the information and, depending on its type, performs certain actions, for example: when it receives a number, it makes the LED flash the corresponding number of times; when it receives text, it writes it to a file in its system (which can be read later); and when it receives an audio file, it plays it.
+
+In general all project looks like that:
+
+![projectDiagram](./pictures/projectDiagram.svg)
