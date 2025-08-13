@@ -45,7 +45,6 @@ while True:
     print("encoded =", encoded)
     bit.send(encoded, infoLed)
     currentState = posting
-    sleep(1)
   elif not succeed:
     print("[!] Error: something went wrong (are you assigned this model to topic?)")
   sleep(1)
