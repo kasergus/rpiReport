@@ -43,15 +43,10 @@ megalovania = [
 encoded = dn.encodeAudio(megalovania)
 packed = pack(encoded)
 
-url = "https://keyboards-cleveland-fantastic-zoning.trycloudflare.com/rpitopic"
-headers = {"Content-Type": "application/json"}
-
 
 while True:
   decodeType = {"int": showInt, "text": showText, "audio": showAudio}
-  print("[#] Success before receive")
   binMas = bit.receive(element)
-  print("[#] Success after receive")
   decodedMsg = dn.decode(binMas)
   decodedMsgType = dn.getType(binMas)
   decodeType[decodedMsgType](decodedMsg)
