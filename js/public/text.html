@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send text message</title>
+    <style>
+      * {
+        font-family: "IBM Plex Mono", monospace;
+        margin: 5px
+      }
+    </style>
+    <body>
+      <form action="/sendtext" method="POST">
+        <label for="msg">Send</label>
+        <input type="text" name="message" placeholder="Message" required>
+        <label for="topics">to</label>
+        <select name="topics" id="topics" style="height: 200px" multiple required></select>
+        <button type="submit">Send</button>
+        <script src="./fillTopics.js"></script>
+      </form>
+      <form action="/index.html" method="GET">
+        <button type="submit">Back</button>
+      </form>
+    </body>
+

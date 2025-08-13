@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send audio</title>
+    <style>
+      * {
+        font-family: "IBM Plex Mono", monospace;
+        margin: 5px
+      }
+    </style>
+    <body>
+      <form action="/sendaudio" method="POST">
+        <label for="audios">Send</label>
+        <select name="audioName" id="audios" required></select>
+        <label for="topics">to</label>
+        <select name="topics" id="topics" style="height: 200px" multiple required></select>
+        <button type="submit">Send</button>
+        <script>
+          async function main() {
+            let audios = document.getElementById("audios");
+            let response = await fetch("/getaudios");
+            let data = await response.json();
+            console.log("[#] Audios:", audios);
+            data.forEach((item) => {
+              let child = document.createElement("option");
+              child.textContent = item.name;
+              audios.appendChild(child);
+            });
+          }
+          main();
+        </script>
+        <script src="./fillTopics.js"></script>
+      </form>
+      <form action="/index.html" method="GET">
+        <button type="submit">Back</button>
+      </form>
+    </body>
+</html>
+

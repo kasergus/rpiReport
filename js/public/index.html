@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input page</title>
+    <style>
+      * {
+        font-family: "IBM Plex Mono", monospace;
+        margin: 5px
+      }
+      .tale {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      table, td, th {
+        border: 1px solid black;
+        border-radius: 3px
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="/static/create.html" method="GET">
+      <input type="submit" value="Create topic">
+    </form>
+    <form action="/static/assign.html" method="GET">
+      <input type="submit" value="Assign rpi to topic">
+    </form>
+    <form action="/static/menu.html" method="GET">
+      <input type="submit" value="Message menu">
+    </form>
+  </body>
+
+  <div style="display: flex; flex-direction: row">
+    <div class="tale">
+      <!-- <label for="msgAmount">Amount of messages</label> -->
+      <table class="stat">
+        <thead>Amount of messages</thead>
+        <tbody id="msgAmount" name="msgAmount">
+          <tr>
+            <th>Topic</th>
+            <th>Messages amount</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tale">
+      <table class="stat">
+        <thead>Amount of subscriptions</thead>
+        <tbody id="subAmount" name="subAmount">
+          <tr>
+            <th>Topic</th>
+            <th>Subscriptions amount</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      async function main(elementId, resource, statElementName) {
+        try {
+          let topicTable = document.getElementById(elementId);
+          let response = await fetch(resource);
+          let data = await response.json();
+          data.forEach((item) => {
+            let element = document.createElement("tr")
+            let path = document.createElement("td");
+            let statElement = document.createElement("td");
+            path.textContent = item.path;
+            statElement.textContent = item[statElementName];
+            element.appendChild(path);
+            element.appendChild(statElement);
+            topicTable.appendChild(element);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      main("msgAmount", "/getamounts", "amount");
+      main("subAmount", "/getsubs", "subs");
+    </script>
+  </div>
+</html>

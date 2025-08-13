@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign test</title>
+    <style>
+      * {
+        font-family: "IBM Plex Mono", monospace;
+        margin: 5px
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      Assigning rpi to topic
+    </header>
+    <form action="/assign" method="POST">
+      <label for="rpis">Assign</label>
+      <select name="models" id="rpis" style="height:222px" multiple required></select>
+      <label for="path">to</label>
+      <select name="path" id="topics" required></select>
+      <button type="submit">Assign</button>
+      <script>
+      function extract(data, parametr) {
+        let extracted = [];
+        if (data.length > 0) {
+          data.forEach((item) => {
+            extracted.push(item[parametr]);
+          });
+        }
+        return extracted;
+      }
+
+      function addTo(webElementId, dataArray) {
+        const webElement = document.getElementById(webElementId);
+        if (dataArray.length > 0) {
+          dataArray.forEach((item) => {
+            let element = document.createElement("option");
+            element.textContent = item;
+            webElement.appendChild(element);
+          });
+        }
+      }
+
+      async function fetchData() {
+        try {
+          const response = await fetch("/getrpis");
+          const data = await response.json();
+          let extracted = extract(data, "model");
+          addTo("rpis", extracted);
+        } catch (error) {
+          console.log("[!] RPI error");
+          console.log(error);
+          alert(error);
+        }
+        try {
+          const response = await fetch("/gettopics");
+          const data = await response.json();
+          let extracted = extract(data, "path");
+          addTo("topics", extracted);
+        } catch (error) {
+          console.log("[!] Topic error");
+          console.log(error);
+        }
+      }
+      fetchData();
+      </script>
+    </form>
+  </body>
+  <form action="/index.html" method="GET" style="margin-top: 50px" >
+    <button type="submit">Back</button>
+  </form>
+</html>

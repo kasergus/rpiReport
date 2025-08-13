@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send number</title>
+    <style>
+      * {
+        font-family: "IBM Plex Mono", monospace;
+        margin: 5px
+      }
+    </style>
+    <body>
+      <form action="/sendint" method="POST">
+        <label for="text">Send</label>
+        <input type="text" name="message" placeholder="Number" pattern="^[1-9]+[0-9]*$" required>
+        <label for="topics">to</label>
+        <select name="topics" id="topics" style="height: 200px" multiple required></select>
+        <button type="submit">Send</button>
+        <script src="fillTopics.js"></script>
+      </form>
+      <form action="/index.html" method="GET">
+        <button type="submit">Back</button>
+      </form>
+    </body>
+</html>
+
