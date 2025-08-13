@@ -69,7 +69,7 @@ Also I used black cylinder to put photoresistor and sending led, in order to pre
 
 My platform is local device, but I use [cloudflared](https://github.com/cloudflare/cloudflared) to make it global accessible. Cloudflared is just a tunnel, which redirects all requests to my local machine, so it is not a cloud. I chose that because I want to do all by myself, not to use ready solutions.
 
-### How project looks?
+### How the project looks?
 
 Because I have only one bredboard and to rpis, I placed components of both onto one bredboard. Green led is status led, red led is number led. Sending led and photoresistor are hidden into black cylinder.
 
